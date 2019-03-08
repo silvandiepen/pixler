@@ -7,7 +7,7 @@
 						v-for="(pixel, index) in canvas"
 						:key="index"
 						:class="['pixel-canvas__pixel', pixelColor(pixel)]"
-						@click="setPixel(pixel)"
+						@click="setPixel(index)"
 					></div>
 				</div>
 			</div>
@@ -49,16 +49,16 @@ export default {
 				{ title: 'purple', id: 'p', value: '#992299' }
 			],
 			size: 8,
-			currentColor: null
+			currentColor: null,
+			canvas: null
 		};
 	},
 	created() {
 		this.canvas = this.createCanvas();
 	},
 	methods: {
-		setPixel(pixel) {
-			console.log('do something with this pixel', pixel, this.currentColor);
-			pixel.color = this.currentColor;
+		setPixel(index) {
+			this.canvas[index].color = this.currentColor;
 		},
 		pixelColor(pixel) {
 			if (pixel.color !== null) {
