@@ -31,6 +31,7 @@ module.exports = {
 		],
 		semi: ['warn', 'always'],
 		'no-console': 'off',
+		'yoda': 'warn',
 		'no-trailing-spaces': 'warn',
 		'no-undef': 'warn',
 		'no-irregular-whitespace': 'warn',
@@ -131,6 +132,16 @@ module.exports = {
 				startTag: 'never',
 				endTag: 'never',
 				selfClosingTag: 'always'
+			}
+		],
+		'vue/max-attributes-per-line': [
+			'off',
+			{
+				singleline: 3,
+				multiline: {
+					max: 1,
+					allowFirstLine: false
+				}
 			}
 		],
 		'vue/mustache-interpolation-spacing': ['warn', 'always'],
