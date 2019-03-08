@@ -52,16 +52,8 @@ export default {
 			currentColor: null
 		};
 	},
-	computed: {
-		canvas() {
-			let canvas = [];
-			for (let i = 0; i < this.size * this.size; i++) {
-				canvas.push({
-					color: null
-				});
-			}
-			return canvas;
-		}
+	created() {
+		this.canvas = this.createCanvas();
 	},
 	methods: {
 		setPixel(pixel) {
@@ -77,6 +69,15 @@ export default {
 		},
 		setColor(color) {
 			this.currentColor = color.id;
+		},
+		createCanvas() {
+			let canvas = [];
+			for (let i = 0; i < this.size * this.size; i++) {
+				canvas.push({
+					color: null
+				});
+			}
+			return canvas;
 		}
 	}
 };
