@@ -17,3 +17,10 @@ export default {
 	}
 };
 </script>
+
+<style lang="scss">
+@import '~tools';
+.layout {
+	height: 100vh;
+}
+</style>

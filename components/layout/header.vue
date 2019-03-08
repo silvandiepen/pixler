@@ -1,7 +1,5 @@
 <template>
-	<header id="header" class="header">
-		<h3>fissa</h3>
-	</header>
+	<header id="header" class="header"></header>
 </template>
 
 <script>
@@ -12,6 +10,7 @@ export default {};
 @import '~tools';
 
 .header {
+	position: fixed;
 	// Header styles
 }
 </style>

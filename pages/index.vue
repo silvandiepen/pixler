@@ -39,19 +39,26 @@ export default {
 	data() {
 		return {
 			colorset: [
-				{ title: 'black', id: 'b', value: '#000000' },
-				{ title: 'white', id: 'w', value: '#ffffff' },
-				{ title: 'red', id: 'r', value: '#ff0000' },
-				{ title: 'orange', id: 'o', value: '#ff9900' },
-				{ title: 'yellow', id: 'y', value: '#ffff00' },
-				{ title: 'green', id: 'g', value: '#00cc00' },
-				{ title: 'blue', id: 'a', value: '#6688ff' },
-				{ title: 'purple', id: 'p', value: '#992299' }
+				{ title: 'black', id: 'a', value: '#000000' },
+				{ title: 'white', id: 'b', value: '#ffffff' },
+				{ title: 'red', id: 'c', value: '#ff0000' },
+				{ title: 'orange', id: 'd', value: '#ff9900' },
+				{ title: 'yellow', id: 'e', value: '#ffff00' },
+				{ title: 'green', id: 'f', value: '#00cc00' },
+				{ title: 'blue', id: 'g', value: '#6688ff' },
+				{ title: 'purple', id: 'h', value: '#992299' }
 			],
 			size: 8,
 			currentColor: null,
-			canvas: null
+			canvas: []
 		};
+	},
+	watch: {
+		size: {
+			handler() {
+				this.canvas = this.createCanvas();
+			}
+		}
 	},
 	created() {
 		this.canvas = this.createCanvas();
@@ -87,35 +94,35 @@ export default {
 @import '~tools';
 
 $colors: (
-	'b': (
+	'a': (
 		'black',
 		'#000000'
 	),
-	'w': (
+	'b': (
 		'white',
 		'#ffffff'
 	),
-	'r': (
+	'c': (
 		'red',
 		'#ff0000'
 	),
-	'o': (
+	'd': (
 		'orange',
 		'#ff9900'
 	),
-	'y': (
+	'e': (
 		'yellow',
 		'#ffff00'
 	),
-	'g': (
+	'f': (
 		'green',
 		'#00cc00'
 	),
-	'a': (
+	'g': (
 		'blue',
 		'#6688ff'
 	),
-	'p': (
+	'h': (
 		'purple',
 		'#992299'
 	)
@@ -124,10 +131,15 @@ $colors: (
 	display: grid;
 	grid-template-columns: repeat(var(--grid-size), 1fr);
 	grid-template-rows: var(--grid-size);
+	grid-gap: 4px;
+	padding: 4px;
+	box-shadow: 0 0 1rem 0 color(Black, 0.25);
+	border-radius: 4px;
 	&__pixel {
 		height: 0;
 		padding-bottom: 100%;
-		background-image: linear-gradient(to right bottom, color(Black, 0.1), color(Black, 0));
+		background-image: linear-gradient(to right bottom, color(Black, 0.05), color(Black, 0));
+		border-radius: 2px;
 		@each $color in $colors {
 			&.background--#{nth($color, 1)} {
 				background-color: unquote(nth(nth($color, 2), 2));
@@ -153,11 +165,18 @@ $colors: (
 }
 
 .canvas-column {
+	background-color: color(Offwhite);
 	padding: grid(1);
+	@media #{$medium-up} {
+		height: 100vh;
+	}
 }
 .tools-column {
 	padding: grid(1);
-	background-color: color(Blue);
+	background-color: color(Dark);
+	@media #{$medium-up} {
+		height: 100vh;
+	}
 }
 
 .intro {
